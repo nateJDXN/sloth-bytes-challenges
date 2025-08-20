@@ -29,8 +29,7 @@ def sameUpsideDown(num):
 
     # base case
     if num == "0" or num == "":
-        print("True\n")
-        return
+        return True
 
     # create dict to stored flipped values
     dict = {
@@ -47,9 +46,8 @@ def sameUpsideDown(num):
     while p1 < p2:
         # pointer 1 should be the flipped value of pointer 2
         if num[p1] != dict[num[p2]]:
-            print("Expected " + dict[num[p2]] + ", but got " + num[p2])
-            print("False\n")
-            return
+            # print("Expected " + dict[num[p2]] + ", but got " + num[p2])
+            return False
         
         # increment pointers
         p1 += 1
@@ -57,23 +55,30 @@ def sameUpsideDown(num):
 
     # middle value reached, middle value must be 0
     if p1 == p2 and num[p1] != '0':
-        print("Expected 0, but got " + num[p1])
-        print("False\n")
-        return
+        # print("Expected 0, but got " + num[p1])
+        return False
     
-    print("True\n")
-    return
+    return True
 
 def main():
-    sameUpsideDown("6090609")           # True
-    sameUpsideDown("9669")              # False
-    sameUpsideDown("6")                 # False
-    sameUpsideDown("9")                 # False
-    sameUpsideDown("0")                 # True
-    sameUpsideDown("6090609")           # True
-    sameUpsideDown("60906096090609")    # True
-    sameUpsideDown("966909669")         # False
-    sameUpsideDown("96666660999999")    # False
+
+    tests = {
+        "6090609" : "True",
+        "9669" : False,
+        "6" : False,
+        "9" : False,
+        "0" : True,
+        "6090609" : True,
+        "60906096090609" : True,
+        "966909669" : False,
+        "96666660999999": False
+    }
+
+    for test in tests:
+        if tests[test] != sameUpsideDown(test):
+            print("✗ - Fail\n" + test + " is not the same upside down.")
+            continue
+        print("✔ - Passed\n")
 
 if __name__ == "__main__":
     main()
