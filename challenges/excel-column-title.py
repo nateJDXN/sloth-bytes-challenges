@@ -52,6 +52,8 @@ def convert_to_title(num):
     result = char1 + char2
     result = result.replace("@", "")
 
+    print("Num1: " + str(num1) + "\nNum2: " + str(num2) + "\nChar1: " + char1 + "\nChar2: " + char2 + "\nResult: " + result)
+
     return result
 
 
@@ -69,8 +71,8 @@ def main():
 
     for test in tests:
         result = convert_to_title(test)
-        if tests[test] != convert_to_title(test):
-            print("✗ - Fail\nGot " + result + " but expected " + tests[test] + ".")
+        if tests[test] != result:
+            print("✗ - Fail\nGot " + result + " but expected " + tests[test] + ".\n")
             continue
         print("✔ - Passed\n")
 
